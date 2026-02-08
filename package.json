@@ -1,0 +1,22 @@
+{
+  "name": "qa-automation-portfolio",
+  "version": "1.0.0",
+  "description": "QA automation project using Playwright, API testing and CI pipeline with GitHub Actions.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inforf/qa-automation-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inforf/qa-automation-portfolio/issues"
+  },
+  "homepage": "https://github.com/inforf/qa-automation-portfolio#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.2"
+  }
+}
