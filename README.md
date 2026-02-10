@@ -1,83 +1,90 @@
+
 [![Playwright Tests](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml)
 
-QA Automation Portfolio
+# QA Automation Portfolio
 
-Projeto demonstrando implementação de automação de testes utilizando Playwright com execução contínua em pipeline CI.
+Projeto de automação de testes E2E e API utilizando Playwright com execução contínua em CI.
 
-Cobertura de Testes
-End-to-End (UI)
+---
 
-Automação de fluxo crítico de e-commerce:
+## O que este projeto demonstra
 
-Login de usuário
+* Automação de fluxo crítico de aplicação web
+* Testes de API REST
+* Organização com Page Object Model
+* Execução automática em pipeline CI
+* Investigação de falhas fora do ambiente local
 
-Adição de produto ao carrinho
+---
 
-Processo de checkout
+## Fluxo automatizado
 
-Validação de confirmação de pedido
+Cenário completo de e-commerce:
 
-Os testes utilizam Page Object Model para organização e reutilização de código.
+1. Login
+2. Adição de produto ao carrinho
+3. Checkout
+4. Confirmação do pedido
 
-Testes de API
+---
 
-Validação de endpoints REST:
+## Testes de API
 
-Verificação de status code HTTP
+Validações realizadas:
 
-Validação de estrutura JSON
+* Status code HTTP
+* Estrutura JSON
+* Campos obrigatórios da resposta
+* Tratamento de bloqueio em ambiente CI (headers HTTP)
 
-Verificação de propriedades obrigatórias da resposta
+---
 
-Tratamento de bloqueio por infraestrutura (headers HTTP para CI)
+## Arquitetura do projeto
 
-Arquitetura
-
-O projeto segue estrutura baseada em Page Object Model:
-
-pages/ → abstração da interface
-
+pages/ → Page Objects (interação com a interface)
 tests/ → cenários de teste
-
 playwright.config.ts → configuração de execução
 
-Integração Contínua
+---
 
-Os testes são executados automaticamente a cada commit utilizando GitHub Actions.
+## Integração Contínua
 
-O pipeline:
+A cada push no repositório:
 
-Instala dependências
+* Instala dependências
+* Provisiona navegadores
+* Executa testes UI e API
+* Gera relatório
 
-Provisiona navegadores
+Pipeline executado automaticamente pelo GitHub Actions.
 
-Executa testes UI e API
+---
 
-Gera relatório automático
+## Tecnologias
 
-Tecnologias Utilizadas
+* Playwright
+* TypeScript
+* Node.js
+* GitHub Actions
 
-Playwright
+---
 
-TypeScript
+## Executar localmente
 
-Node.js
-
-GitHub Actions
-
-Execução Local
+```
 npm install
 npx playwright test
-Objetivo
+```
 
-Demonstrar experiência prática em:
+---
 
-Automação E2E
+## Objetivo
 
-Testes de API
+Demonstrar capacidade prática em:
 
-Organização de testes
+* Automação E2E
+* Testes de API
+* Organização de testes
+* Análise de falhas em CI
+* Integração contínua
 
-Investigação de falhas em CI
-
-Integração contínua
