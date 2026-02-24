@@ -1,140 +1,163 @@
 [![Playwright Tests](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml)
 
-# QA Automation Portfolio
+# Portfólio de QA Automation — Playwright + CI/CD + Quality Gate
 
-Este repositório demonstra a **validação contínua de qualidade** por
-meio de automação, integração e análise de resultados.
+Este repositório demonstra um fluxo completo de trabalho de QA em um ambiente próximo do real, e não apenas scripts de automação.
 
-Aqui o foco não é apenas executar testes automatizados --- é **usar
-automação para apoiar decisão de entrega**.
+O projeto simula como um QA Engineer atua dentro de um time de desenvolvimento profissional, incluindo:
 
-O objetivo é mostrar como testes deixam de ser uma atividade isolada e
-passam a integrar o fluxo real de desenvolvimento.
+- Testes automatizados de API e UI
+- Validação de Pull Requests
+- Integração Contínua (CI)
+- Análise de qualidade de código
+- Quality Gate obrigatório
+- Proteção da branch principal
+
+O objetivo deste projeto é demonstrar experiência prática com processos modernos de qualidade de software utilizados em empresas.
 
 ---
 
-## Objetivo
+## Stack utilizada
 
-Garantir que mudanças no sistema possam ser avaliadas rapidamente quanto
-a:
-
-- risco funcional
-- impacto de regressão
-- comportamento do usuário
-- estabilidade do fluxo principal
-
-A automação aqui funciona como **instrumento de prevenção**, permitindo
-identificar problemas antes que cheguem ao usuário final.
+| Ferramenta | Finalidade |
+|-----------|------|
+| Playwright | Automação de testes UI e API |
+| TypeScript | Linguagem dos testes |
+| GitHub Actions | Pipeline de Integração Contínua |
+| SonarCloud | Análise de qualidade e segurança do código |
+| Branch Protection | Controle de merge e validação obrigatória |
 
 ---
 
 ## O que este projeto demonstra
 
-Este projeto evidencia competências práticas em:
+Este repositório foi construído para representar o dia a dia real de um QA dentro de um time ágil.
 
-- automação de testes E2E
-- testes de API
-- organização de cenários de validação
-- geração de relatórios
-- execução em pipeline CI
-- análise de falhas
-- apoio à decisão de release
+### Testes automatizados
+- Testes de API utilizando `request` do Playwright
+- Testes End-to-End de interface
+- Validações e asserts
+- Execução paralela
 
-A proposta não é substituir o QA humano --- e sim **ampliar sua
-capacidade de análise**.
+### Integração Contínua
+Cada Pull Request dispara automaticamente uma pipeline que:
 
----
+1. Instala dependências
+2. Instala os browsers do Playwright
+3. Executa todos os testes automatizados
+4. Publica os resultados
 
-## Estrutura
+### Qualidade de código e Quality Gate
+O SonarCloud analisa o repositório a cada Pull Request:
 
-Os testes são organizados por comportamento da aplicação:
+- Code Smells
+- Problemas de segurança
+- Manutenibilidade
+- Validação do Quality Gate
 
-    tests/
-     ├─ login
-     ├─ navegação
-     ├─ carrinho / fluxo principal
-     ├─ validações
-     └─ API
+Um Pull Request **não pode ser aprovado** caso o Quality Gate falhe.
 
-Cada cenário busca validar o que realmente importa:\
-se o usuário consegue concluir sua tarefa.
+### Proteção da branch principal
+A branch `main` é protegida e exige:
 
----
+- Pull Request obrigatório
+- Testes automatizados aprovados
+- Quality Gate aprovado
 
-## Tecnologias Utilizadas
+Commits diretos na `main` são bloqueados.
 
-- Playwright
-- JavaScript / Node.js
-- GitHub Actions (CI)
-- Relatórios HTML
-- Estrutura Page Object
-- Execução headless
+Isso simula um ambiente real de produção.
 
 ---
 
-## Pipeline de Integração Contínua
+## Pipeline de CI
 
-A cada execução:
+Todo Pull Request executa automaticamente:
 
-1.  o ambiente é preparado automaticamente
-2.  os testes são executados
-3.  falhas são registradas
-4.  relatórios são gerados
-5.  a equipe pode avaliar o risco da alteração
+```
+Pull Request → CI → Testes Playwright → SonarCloud → Quality Gate → Merge permitido
+```
 
-A automação passa então a participar diretamente da decisão:
-
-> liberar ou não liberar uma versão
+Se qualquer etapa falhar, o merge é bloqueado.
 
 ---
 
-## Execução Local
+## Executando o projeto localmente
 
-Instalação:
+### 1. Instalar dependências
+```bash
+npm install
+```
 
-    npm install
-    npx playwright install
+### 2. Instalar browsers do Playwright
+```bash
+npx playwright install
+```
 
-Executar testes:
+### 3. Executar os testes
+```bash
+npx playwright test
+```
 
-    npx playwright test
-
-Abrir relatório:
-
-    npx playwright show-report
-
----
-
-## Relatórios
-
-Os relatórios não servem apenas para indicar "passou" ou "falhou".\
-Eles permitem entender:
-
-- onde o fluxo quebrou
-- qual ação causou a falha
-- qual funcionalidade foi impactada
-
-Ou seja, a automação fornece **informação para decisão**, não apenas um
-resultado binário.
+### 4. Abrir relatório HTML
+```bash
+npx playwright show-report
+```
 
 ---
 
-## Papel deste projeto no Portfólio
+## Cobertura dos testes
 
-Enquanto outros projetos mostram análise de comportamento e reprodução
-de falhas, este repositório mostra:
+O projeto contém:
 
-**validação contínua e prevenção de problemas**.
+- Testes de API
+- Validação de resposta HTTP
+- Verificação de estrutura JSON
+- Fluxo de usuário completo (E2E)
 
-Ele representa a etapa em que a qualidade passa a ser parte do processo
-de entrega --- não uma verificação tardia.
+Exemplos de validações:
+- Status HTTP
+- Estrutura de resposta
+- Interação com elementos da interface
+- Navegação entre páginas
 
-Qualidade não é uma fase após o desenvolvimento.\
-É um mecanismo que acompanha a evolução do sistema.
+---
+
+## Fluxo de trabalho adotado
+
+O repositório segue um fluxo profissional de desenvolvimento:
+
+1. Criar uma branch de funcionalidade
+2. Abrir Pull Request
+3. A pipeline de CI executa
+4. Testes e Quality Gate precisam passar
+5. O merge na main é liberado
+
+Nenhum código é integrado sem validação automatizada.
+
+---
+
+## Por que isso é importante
+
+Hoje empresas esperam que um QA:
+
+- Entenda CI/CD
+- Valide Pull Requests
+- Trabalhe junto com desenvolvedores
+- Garanta qualidade do código
+- Evite regressões automaticamente
+
+Este projeto demonstra essas capacidades na prática.
 
 ---
 
 ## Autor
 
-Ronaldo Ferreira\
-https://github.com/inforf
+Ronaldo Ferreira  
+Projeto de portfólio — QA Automation
+
+---
+
+## Observação
+
+Este repositório foi estruturado propositalmente como um ambiente próximo de produção para demonstrar responsabilidades reais de QA, e não apenas escrita de testes automatizados.
