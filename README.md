@@ -131,6 +131,7 @@ de entrega --- não uma verificação tardia.
 
 Qualidade não é uma fase após o desenvolvimento.\
 É um mecanismo que acompanha a evolução do sistema.
+.
 
 ---
 
