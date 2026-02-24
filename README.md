@@ -1,4 +1,3 @@
-
 [![Playwright Tests](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml)
 
 # QA Automation Portfolio
@@ -12,39 +11,39 @@ automação para apoiar decisão de entrega**.
 O objetivo é mostrar como testes deixam de ser uma atividade isolada e
 passam a integrar o fluxo real de desenvolvimento.
 
-------------------------------------------------------------------------
+---
 
 ## Objetivo
 
 Garantir que mudanças no sistema possam ser avaliadas rapidamente quanto
 a:
 
--   risco funcional
--   impacto de regressão
--   comportamento do usuário
--   estabilidade do fluxo principal
+- risco funcional
+- impacto de regressão
+- comportamento do usuário
+- estabilidade do fluxo principal
 
 A automação aqui funciona como **instrumento de prevenção**, permitindo
 identificar problemas antes que cheguem ao usuário final.
 
-------------------------------------------------------------------------
+---
 
 ## O que este projeto demonstra
 
 Este projeto evidencia competências práticas em:
 
--   automação de testes E2E
--   testes de API
--   organização de cenários de validação
--   geração de relatórios
--   execução em pipeline CI
--   análise de falhas
--   apoio à decisão de release
+- automação de testes E2E
+- testes de API
+- organização de cenários de validação
+- geração de relatórios
+- execução em pipeline CI
+- análise de falhas
+- apoio à decisão de release
 
 A proposta não é substituir o QA humano --- e sim **ampliar sua
 capacidade de análise**.
 
-------------------------------------------------------------------------
+---
 
 ## Estrutura
 
@@ -60,18 +59,18 @@ Os testes são organizados por comportamento da aplicação:
 Cada cenário busca validar o que realmente importa:\
 se o usuário consegue concluir sua tarefa.
 
-------------------------------------------------------------------------
+---
 
 ## Tecnologias Utilizadas
 
--   Playwright
--   JavaScript / Node.js
--   GitHub Actions (CI)
--   Relatórios HTML
--   Estrutura Page Object
--   Execução headless
+- Playwright
+- JavaScript / Node.js
+- GitHub Actions (CI)
+- Relatórios HTML
+- Estrutura Page Object
+- Execução headless
 
-------------------------------------------------------------------------
+---
 
 ## Pipeline de Integração Contínua
 
@@ -87,7 +86,7 @@ A automação passa então a participar diretamente da decisão:
 
 > liberar ou não liberar uma versão
 
-------------------------------------------------------------------------
+---
 
 ## Execução Local
 
@@ -104,21 +103,21 @@ Abrir relatório:
 
     npx playwright show-report
 
-------------------------------------------------------------------------
+---
 
 ## Relatórios
 
 Os relatórios não servem apenas para indicar "passou" ou "falhou".\
 Eles permitem entender:
 
--   onde o fluxo quebrou
--   qual ação causou a falha
--   qual funcionalidade foi impactada
+- onde o fluxo quebrou
+- qual ação causou a falha
+- qual funcionalidade foi impactada
 
 Ou seja, a automação fornece **informação para decisão**, não apenas um
 resultado binário.
 
-------------------------------------------------------------------------
+---
 
 ## Papel deste projeto no Portfólio
 
@@ -133,10 +132,9 @@ de entrega --- não uma verificação tardia.
 Qualidade não é uma fase após o desenvolvimento.\
 É um mecanismo que acompanha a evolução do sistema.
 
-------------------------------------------------------------------------
+---
 
 ## Autor
 
 Ronaldo Ferreira\
 https://github.com/inforf
-
