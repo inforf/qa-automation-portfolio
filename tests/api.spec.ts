@@ -1,25 +1,16 @@
 import { test, expect } from '@playwright/test';
 
-test('get all products (contract test)', async ({ request }) => {
+test('GET /posts/1 - validates public API contract', async ({ request }) => {
+  const response = await request.get('https://jsonplaceholder.typicode.com/posts/1');
 
-  // resposta simulada
-  const fakeProducts = [
-    { id: 1, title: 'Mock Product', price: 10.5 },
-    { id: 2, title: 'Mock Product 2', price: 20.0 }
-  ];
-
-  // simulamos a API
-  const response = {
-    status: 200,
-    json: async () => fakeProducts
-  };
-
-  // valida o contrato esperado
-  expect(response.status).toBe(200);
+  expect(response.status()).toBe(200);
 
   const body = await response.json();
 
-  expect(body.length).toBeGreaterThan(0);
-  expect(body[0]).toHaveProperty('title');
-  expect(body[0]).toHaveProperty('price');
+  expect(body).toMatchObject({
+    userId: expect.any(Number),
+    id: 1,
+    title: expect.any(String),
+    body: expect.any(String),
+  });
 });
