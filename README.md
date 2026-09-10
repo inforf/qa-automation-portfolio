@@ -130,3 +130,5 @@ A ideia é exercitar:
 
 Ronaldo Ferreira  
 https://github.com/inforf
+
+<!-- temporary CI validation change -->
