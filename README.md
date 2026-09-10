@@ -1,163 +1,132 @@
 [![Playwright Tests](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/inforf/qa-automation-portfolio/actions/workflows/playwright.yml)
 
-# Portfólio de QA Automation — Playwright + CI/CD + Quality Gate
+# QA Automation Portfolio — Playwright + API + CI
 
-Este repositório demonstra um fluxo completo de trabalho de QA em um ambiente próximo do real, e não apenas scripts de automação.
+Projeto independente do QA Playground, criado para demonstrar automação aplicada a fluxos públicos e integração contínua.
 
-O projeto simula como um QA Engineer atua dentro de um time de desenvolvimento profissional, incluindo:
+O foco está em três frentes:
 
-- Testes automatizados de API e UI
-- Validação de Pull Requests
-- Integração Contínua (CI)
-- Análise de qualidade de código
-- Quality Gate obrigatório
-- Proteção da branch principal
-
-O objetivo deste projeto é demonstrar experiência prática com processos modernos de qualidade de software utilizados em empresas.
+- testes E2E de interface
+- testes de API com serviço público real
+- execução automatizada em Pull Requests
 
 ---
 
-## Stack utilizada
+## O que existe no projeto
 
-| Ferramenta | Finalidade |
-|-----------|------|
-| Playwright | Automação de testes UI e API |
-| TypeScript | Linguagem dos testes |
-| GitHub Actions | Pipeline de Integração Contínua |
-| SonarCloud | Análise de qualidade e segurança do código |
-| Branch Protection | Controle de merge e validação obrigatória |
+### E2E
 
----
+Os testes utilizam o SauceDemo para validar:
 
-## O que este projeto demonstra
+- login
+- navegação
+- carrinho
+- checkout
+- confirmação de compra
 
-Este repositório foi construído para representar o dia a dia real de um QA dentro de um time ágil.
+O fluxo de login utiliza Page Object Model em `pages/login.page.ts`.
 
-### Testes automatizados
-- Testes de API utilizando `request` do Playwright
-- Testes End-to-End de interface
-- Validações e asserts
-- Execução paralela
+### API
 
-### Integração Contínua
-Cada Pull Request dispara automaticamente uma pipeline que:
+O teste em `tests/api.spec.ts` utiliza o `request` do Playwright contra a API pública JSONPlaceholder.
 
-1. Instala dependências
-2. Instala os browsers do Playwright
-3. Executa todos os testes automatizados
-4. Publica os resultados
+Ele valida:
 
-### Qualidade de código e Quality Gate
-O SonarCloud analisa o repositório a cada Pull Request:
+- status HTTP
+- contrato básico da resposta
+- tipos esperados
+- identificador do recurso
 
-- Code Smells
-- Problemas de segurança
-- Manutenibilidade
-- Validação do Quality Gate
+### CI
 
-Um Pull Request **não pode ser aprovado** caso o Quality Gate falhe.
+O workflow `.github/workflows/playwright.yml` é executado em Pull Requests para a branch `main`.
 
-### Proteção da branch principal
-A branch `main` é protegida e exige:
+A pipeline:
 
-- Pull Request obrigatório
-- Testes automatizados aprovados
-- Quality Gate aprovado
+1. instala dependências com `npm ci`
+2. instala os browsers do Playwright
+3. executa os testes
+4. executa análise pelo SonarCloud
 
-Commits diretos na `main` são bloqueados.
+O repositório também contém configuração em `sonar-project.properties`.
 
-Isso simula um ambiente real de produção.
+> A existência do workflow e da análise SonarCloud é demonstrada no próprio código. Regras de merge e proteção de branch dependem da configuração do repositório no GitHub e não são tratadas aqui como requisito garantido.
 
 ---
 
-## Pipeline de CI
+## Stack
 
-Todo Pull Request executa automaticamente:
+| Ferramenta | Uso |
+|---|---|
+| Playwright | testes E2E e API |
+| TypeScript | linguagem dos testes |
+| GitHub Actions | integração contínua |
+| SonarCloud | análise estática |
+| SauceDemo | aplicação pública para E2E |
+| JSONPlaceholder | API pública para contrato |
 
+---
+
+## Estrutura
+
+```text
+.github/workflows/
+  playwright.yml
+
+pages/
+  login.page.ts
+
+tests/
+  api.spec.ts
+  checkout.spec.ts
+  login.spec.ts
+
+playwright.config.ts
+sonar-project.properties
 ```
-Pull Request → CI → Testes Playwright → SonarCloud → Quality Gate → Merge permitido
-```
-
-Se qualquer etapa falhar, o merge é bloqueado.
 
 ---
 
-## Executando o projeto localmente
+## Executando localmente
 
-### 1. Instalar dependências
 ```bash
 npm install
-```
-
-### 2. Instalar browsers do Playwright
-```bash
 npx playwright install
+npm test
 ```
 
-### 3. Executar os testes
+Para abrir o relatório HTML:
+
 ```bash
-npx playwright test
-```
-
-### 4. Abrir relatório HTML
-```bash
-npx playwright show-report
+npm run report
 ```
 
 ---
 
-## Cobertura dos testes
+## Evidências de execução
 
-O projeto contém:
+O Playwright está configurado para:
 
-- Testes de API
-- Validação de resposta HTTP
-- Verificação de estrutura JSON
-- Fluxo de usuário completo (E2E)
+- screenshot em falhas
+- vídeo retido em falhas
+- trace na primeira repetição
+- retries configurados
 
-Exemplos de validações:
-- Status HTTP
-- Estrutura de resposta
-- Interação com elementos da interface
-- Navegação entre páginas
+Essas evidências ajudam na investigação de regressões e na reprodução de problemas.
 
 ---
 
-## Fluxo de trabalho adotado
+## Objetivo
 
-O repositório segue um fluxo profissional de desenvolvimento:
+Este projeto demonstra automação como parte do processo de qualidade, e não apenas como scripts isolados.
 
-1. Criar uma branch de funcionalidade
-2. Abrir Pull Request
-3. A pipeline de CI executa
-4. Testes e Quality Gate precisam passar
-5. O merge na main é liberado
+A ideia é exercitar:
 
-Nenhum código é integrado sem validação automatizada.
-
----
-
-## Por que isso é importante
-
-Hoje empresas esperam que um QA:
-
-- Entenda CI/CD
-- Valide Pull Requests
-- Trabalhe junto com desenvolvedores
-- Garanta qualidade do código
-- Evite regressões automaticamente
-
-Este projeto demonstra essas capacidades na prática.
+**fluxo real → validação automatizada → evidência → feedback no Pull Request**
 
 ---
 
 ## Autor
 
 Ronaldo Ferreira  
-Projeto de portfólio — QA Automation
-
----
-
-## Observação
-
-Este repositório foi estruturado propositalmente como um ambiente próximo de produção para demonstrar responsabilidades reais de QA, e não apenas escrita de testes automatizados.
+https://github.com/inforf
